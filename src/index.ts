@@ -1,8 +1,16 @@
 import CPF from './cpf'
 
-try {
-    const cpf = CPF.create('0000000000')
-    console.log(cpf)
-} catch (error) {
-    console.error(error)
+const assertIfCPFIsValid = (cpf: string) => {
+    try {
+        CPF.create(cpf)
+        console.log(`The CPF ${cpf} is valid.`)
+    } catch {
+        console.log(`The CPF ${cpf} is invalid.`)
+    }
 }
+
+assertIfCPFIsValid("00000000000")      // valid
+assertIfCPFIsValid("12345678900")      // valid
+assertIfCPFIsValid("123.456.789-00")   // valid
+assertIfCPFIsValid("0000000000")       // invalid
+assertIfCPFIsValid("")                 // invalid

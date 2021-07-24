@@ -1,0 +1,1 @@
+export { removeSpecialCharacters } from './removeSpecialCharacters'
