@@ -9,9 +9,13 @@ const assertIfCPFIsValid = (cpf: string) => {
     }
 }
 
+assertIfCPFIsValid("06662860352")      // valid
+assertIfCPFIsValid("066.628.603-52")   // valid
+assertIfCPFIsValid("066.628.602-52")   // invalid
+assertIfCPFIsValid("066.628.602-51")   // invalid
 assertIfCPFIsValid("00000000000")      // invalid
 assertIfCPFIsValid("33333333333")      // invalid
-assertIfCPFIsValid("12345678900")      // valid
-assertIfCPFIsValid("123.456.789-00")   // valid
+assertIfCPFIsValid("12345678900")      // invalid
+assertIfCPFIsValid("123.456.789-00")   // invalid
 assertIfCPFIsValid("0000000000")       // invalid
 assertIfCPFIsValid("")                 // invalid
