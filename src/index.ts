@@ -9,7 +9,8 @@ const assertIfCPFIsValid = (cpf: string) => {
     }
 }
 
-assertIfCPFIsValid("00000000000")      // valid
+assertIfCPFIsValid("00000000000")      // invalid
+assertIfCPFIsValid("33333333333")      // invalid
 assertIfCPFIsValid("12345678900")      // valid
 assertIfCPFIsValid("123.456.789-00")   // valid
 assertIfCPFIsValid("0000000000")       // invalid
