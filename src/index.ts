@@ -1,3 +1,8 @@
-import CPF from "./cpf"
+import CPF from './cpf'
 
-console.log(new CPF("00000000000"))
+try {
+    const cpf = CPF.create('0000000000')
+    console.log(cpf)
+} catch (error) {
+    console.error(error)
+}
