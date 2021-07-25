@@ -4,8 +4,9 @@ const assertIfCPFIsValid = (cpf: string) => {
     try {
         CPF.create(cpf)
         console.log(`The CPF ${cpf} is valid.`)
-    } catch {
+    } catch (error) {
         console.log(`The CPF ${cpf} is invalid.`)
+        console.log(`[error]: ${error}\n`)
     }
 }
 

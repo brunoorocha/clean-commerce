@@ -16,7 +16,7 @@ export default class CPF {
         const sameCharacterValidator = new AllCharactersAreTheSameValidator()
 
         if (!numbersOnlyValidator.isValid(cleanValue)) {
-            throw new Error('A CPF must have numbers only')
+            throw new Error('A CPF must have numbers only.')
         }
 
         if (!lenghtValidator.isValid(cleanValue)) {
@@ -24,11 +24,11 @@ export default class CPF {
         }
 
         if (sameCharacterValidator.isValid(cleanValue)) {
-            throw new Error('This CPF is not valid')
+            throw new Error('This CPF is not valid.')
         }
 
         if (!this.isCPFValid(cleanValue)) {
-            throw new Error('This CPF is not valid')
+            throw new Error('This CPF is not valid.')
         }
 
         return new CPF(cleanValue)
