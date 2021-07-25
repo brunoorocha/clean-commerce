@@ -1,23 +1,27 @@
-import CPF from './cpf'
+import CPF from './models/CPF'
+import Product from './models/Product'
+import Customer from './models/Customer'
+import Order from './models/Order'
 
-const assertIfCPFIsValid = (cpf: string) => {
+const simulateOrder = () => {
     try {
-        CPF.create(cpf)
-        console.log(`The CPF ${cpf} is valid.`)
+        const customer = new Customer(1, 'John Doe', CPF.create('02578969027'))
+        const product1 = new Product('Kindle', 349.0)
+        const product2 = new Product('Echo Dot', 399.0)
+        const product3 = new Product('Fire TV Stick', 449.0)
+        const order = new Order(customer)
+        order.addItem({ id: 1, product: product1, quantity: 3 })
+        order.addItem({ id: 2, product: product2, quantity: 2 })
+        order.addItem({ id: 3, product: product3, quantity: 1 })
+
+        const orderResume = {
+            customer: order.getCustomer().name, 
+            total: order.getTotal()
+        }
+        console.table([orderResume])
     } catch (error) {
-        console.log(`The CPF ${cpf} is invalid.`)
         console.log(`[error]: ${error}\n`)
     }
 }
 
-assertIfCPFIsValid("02578969027")      // valid
-assertIfCPFIsValid("025.789.690-27")   // valid
-assertIfCPFIsValid("025.789.691-27")   // invalid
-assertIfCPFIsValid("025.789.690-272")  // invalid
-assertIfCPFIsValid("00000000000")      // invalid
-assertIfCPFIsValid("33333333333")      // invalid
-assertIfCPFIsValid("12345678900")      // invalid
-assertIfCPFIsValid("123.456.789-00")   // invalid
-assertIfCPFIsValid("0000000000")       // invalid
-assertIfCPFIsValid("025.789.690-2a")   // invalid
-assertIfCPFIsValid("")                 // invalid
+simulateOrder()
