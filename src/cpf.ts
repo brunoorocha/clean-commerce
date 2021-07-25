@@ -48,6 +48,6 @@ export default class CPF {
             return accumulator + currentDigit * (factor - currentDigitIndex)
         }, 0)
         const rest = total % CPF_LENGTH
-        return rest < 2 ? 0 : CPF_LENGTH - (total % CPF_LENGTH)
+        return rest < 2 ? 0 : CPF_LENGTH - rest
     }
 }
