@@ -1,5 +1,5 @@
-import RequiredLenghtValidator from './validators/required-length-validator'
-import NumbersOnlyValidator from './validators/numbers-only-validator'
+import RequiredLenghtValidator from './validators/RequiredLengthValidator'
+import NumbersOnlyValidator from './validators/NumbersOnlyValidator'
 import AllCharactersAreTheSameValidator from './validators/AllCharactersAreTheSameValidator'
 import { removeSpecialCharacters } from './utility'
 

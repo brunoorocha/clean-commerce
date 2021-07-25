@@ -1,4 +1,4 @@
-import Validable from './validable'
+import Validable from './Validable'
 
 export default class AllCharactersAreTheSameValidator implements Validable<string> {
     isValid(value: string): boolean {
