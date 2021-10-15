@@ -1,10 +1,12 @@
-import OrderItem from './OrderItem'
-import Customer from './Customer'
+import OrderItem from "./OrderItem"
+import Customer from "./Customer"
+import Coupon from "./Coupon"
 
 export default class Order {
     constructor (
         private customer: Customer,
-        private items: OrderItem[] = []
+        private items: OrderItem[] = [],
+        private coupon?: Coupon
     ) {}
 
     getCustomer (): Customer {
@@ -24,8 +26,16 @@ export default class Order {
     }
 
     getTotal (): number {
-        return this.items.reduce((total, item) => {
+        let total = this.items.reduce((total, item) => {
             return total + item.product.price * item.quantity
         }, 0)
+        if (this.coupon) {
+            total -= (total * this.coupon.percentage) / 100
+        }
+        return total
+    }
+
+    addCoupon (coupon: Coupon) {
+        this.coupon = coupon
     }
 }

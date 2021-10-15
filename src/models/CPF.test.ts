@@ -22,7 +22,7 @@ describe("CPF Model", () => {
     })
 
     test("Should accept a valid CPF without CPF mask", () => {
-        expect(() => CPF.create("025.789.690-27")).not.toThrowError()
+        expect(() => CPF.create("02578969027")).not.toThrowError()
     })
 
     test("Should accept a valid CPF with CPF mask", () => {
