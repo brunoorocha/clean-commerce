@@ -1,8 +1,7 @@
 import Order from "./Order"
 import Customer from "./Customer"
 import CPF from "./CPF"
-import OrderItem from "./OrderItem"
-import Product from "./product"
+import Product from "./Product"
 
 describe("Order Model", () => {
     let customer: Customer
