@@ -1,8 +1,9 @@
 import PlaceOrder from "./PlaceOrder"
+import PlaceOrderInput from "./dto/PlaceOrderInput"
 
 describe("PlaceOrder UseCase", () => {
     test("Should place an order", () => {
-        const input = {
+        const input: PlaceOrderInput = {
             cpf: "02578969027",
             items: [
                 { description: "Kindle", price: 349.0, quantity: 2 },

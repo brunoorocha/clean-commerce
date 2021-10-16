@@ -4,6 +4,7 @@ import CPF from "../models/CPF"
 import Product from "../models/Product"
 import Coupon from "../models/Coupon"
 import PlaceOrderInput from "./dto/PlaceOrderInput"
+import PlaceOrderOutput from "./dto/PlaceOrderOutput"
 
 export default class PlaceOrder {
     private coupons: Coupon[]
@@ -16,7 +17,7 @@ export default class PlaceOrder {
         ]
     }
 
-    execute (input: PlaceOrderInput) {
+    execute (input: PlaceOrderInput): PlaceOrderOutput {
         const customer = new Customer(1, "John Doe", CPF.create(input.cpf))
         const order = new Order(customer)
         input.items.forEach(item => {
@@ -30,8 +31,7 @@ export default class PlaceOrder {
             }
         }
         this.orders.push(order)
-        return { 
-            total: order.getTotal()
-        }
+        const total = order.getTotal()
+        return { total }
     }
 }
