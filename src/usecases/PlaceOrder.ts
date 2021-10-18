@@ -8,26 +8,22 @@ import Item from "../domain/models/Item"
 import FreightCalculator from "../domain/services/FreightCalculator"
 import ZipcodeCalculator from "../domain/services/ZipcodeCalculator"
 import ZipcodeCalculatorMemory from "../domain/services/ZipcodeCalculatorMemory"
+import CouponRepository from "../domain/CouponRepository"
 
 export default class PlaceOrder {
-    private coupons: Coupon[]
     private items: Item[]
-    private zipcodeCalculator: ZipcodeCalculator
 
     constructor (
+        private couponRepository: CouponRepository,
+        private zipcodeCalculator: ZipcodeCalculator,
         private orders: Order[] = []
     ) {
-        this.coupons = [
-            new Coupon("VALE20", 20, new Date("2021-12-12")),
-            new Coupon("VALE20_EXPIRED", 20, new Date("2020-12-12"))
-        ]
-
+        this.couponRepository = couponRepository
         this.items = [
             new Item("1", "Guitarra", 1000, 100, 50, 15, 3),
             new Item("2", "Amplificador", 5000, 50, 50, 50, 22),
             new Item("3", "Cabo", 30, 10, 10, 10, 1)
         ]
-
         this.zipcodeCalculator = new ZipcodeCalculatorMemory()
     }
 
@@ -42,7 +38,7 @@ export default class PlaceOrder {
             order.freight += FreightCalculator.calculate(distance, item) * orderItem.quantity
         })
         if (input.coupon) {
-            const coupon = this.coupons.find(coupon => coupon.code === input.coupon)
+            const coupon = this.couponRepository.getCouponWithCode(input.coupon)
             if (coupon) {
                 order.addCoupon(coupon)
             }
