@@ -1,8 +1,7 @@
-import Product from './product'
 
 type OrderItem = {
-    readonly id: number
-    readonly product: Product
+    readonly id: string
+    readonly price: number
     quantity: number
 }
 

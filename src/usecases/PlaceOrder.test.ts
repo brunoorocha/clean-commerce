@@ -6,29 +6,29 @@ describe("PlaceOrder UseCase", () => {
         const input: PlaceOrderInput = {
             cpf: "02578969027",
             items: [
-                { description: "Kindle", price: 349.0, quantity: 2 },
-                { description: "Echo Dot", price: 399.0, quantity: 1 },
-                { description: "Fire TV Stick", price: 449.0, quantity: 1 }
+                { id: "1", quantity: 2 },
+                { id: "2", quantity: 1 },
+                { id: "3", quantity: 3 },
             ],
             coupon: "VALE20"
         }
         const placeOrder = new PlaceOrder()
         const output = placeOrder.execute(input)
-        expect(output.total).toBe(1236.8)
+        expect(output.total).toBe(5672.0)
     })
 
     test("Should place an order with an expired coupon", () => {
         const input: PlaceOrderInput = {
             cpf: "02578969027",
             items: [
-                { description: "Kindle", price: 349.0, quantity: 2 },
-                { description: "Echo Dot", price: 399.0, quantity: 1 },
-                { description: "Fire TV Stick", price: 449.0, quantity: 1 }
+                { id: "1", quantity: 2 },
+                { id: "2", quantity: 1 },
+                { id: "3", quantity: 3 },
             ],
             coupon: "VALE20_EXPIRED"
         }
         const placeOrder = new PlaceOrder()
         const output = placeOrder.execute(input)
-        expect(output.total).toBe(1546.0)
+        expect(output.total).toBe(7090.0)
     })
 })

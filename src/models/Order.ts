@@ -17,8 +17,12 @@ export default class Order {
         return this.items
     }
 
-    addItem (item: OrderItem) {
-        this.items.push(item)
+    addItem (id: string, price: number, quantity: number) {
+        this.items.push({
+            id: id,
+            price: price,
+            quantity: quantity
+        })
     }
 
     removeItem (item: OrderItem) {
@@ -27,7 +31,7 @@ export default class Order {
 
     getTotal (): number {
         let total = this.items.reduce((total, item) => {
-            return total + item.product.price * item.quantity
+            return total + item.price * item.quantity
         }, 0)
         if (this.coupon) {
             total -= (total * this.coupon.percentage) / 100

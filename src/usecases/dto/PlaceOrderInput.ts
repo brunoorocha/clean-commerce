@@ -1,6 +1,5 @@
 type PlaceOrderInputItem = {
-    description: string,
-    price: number,
+    id: string,
     quantity: number
 }
 
