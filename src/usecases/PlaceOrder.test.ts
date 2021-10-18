@@ -2,12 +2,15 @@ import PlaceOrder from "./PlaceOrder"
 import PlaceOrderInput from "./dto/PlaceOrderInput"
 import CouponRepositoryMemory from "../domain/CouponRepositoryMemory"
 import ZipcodeCalculatorMemory from "../domain/services/ZipcodeCalculatorMemory"
+import ItemRepositoryMemory from "../domain/ItemRepositoryMemory"
 
 describe("PlaceOrder UseCase", () => {
+    let itemRepository: ItemRepositoryMemory
     let couponRepository: CouponRepositoryMemory
     let zipcodeCalculator: ZipcodeCalculatorMemory
 
     beforeEach(() => {
+        itemRepository = new ItemRepositoryMemory()
         couponRepository = new CouponRepositoryMemory()
         zipcodeCalculator = new ZipcodeCalculatorMemory()
     })
@@ -23,7 +26,7 @@ describe("PlaceOrder UseCase", () => {
             ],
             coupon: "VALE20"
         }
-        const placeOrder = new PlaceOrder(couponRepository, zipcodeCalculator)
+        const placeOrder = new PlaceOrder(itemRepository, couponRepository, zipcodeCalculator)
         const output = placeOrder.execute(input)
         expect(output.total).toBe(5982.0)
     })
@@ -39,7 +42,7 @@ describe("PlaceOrder UseCase", () => {
             ],
             coupon: "VALE20_EXPIRED"
         }
-        const placeOrder = new PlaceOrder(couponRepository, zipcodeCalculator)
+        const placeOrder = new PlaceOrder(itemRepository, couponRepository, zipcodeCalculator)
         const output = placeOrder.execute(input)
         expect(output.total).toBe(7400.0)
     })
@@ -55,7 +58,7 @@ describe("PlaceOrder UseCase", () => {
             ],
             coupon: "VALE20_EXPIRED"
         }
-        const placeOrder = new PlaceOrder(couponRepository, zipcodeCalculator)
+        const placeOrder = new PlaceOrder(itemRepository, couponRepository, zipcodeCalculator)
         const output = placeOrder.execute(input)
         expect(output.freight).toBe(310.0)
     })
