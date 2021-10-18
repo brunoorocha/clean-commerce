@@ -2,6 +2,7 @@ import Order from "./Order"
 import Customer from "./Customer"
 import CPF from "./CPF"
 import Product from "./Product"
+import Coupon from "./Coupon"
 
 describe("Order Model", () => {
     let customer: Customer
@@ -27,7 +28,14 @@ describe("Order Model", () => {
     test("Should apply coupon discount correctly", () => {
         const order = new Order(customer, [])
         order.addItem({ id: 1, product, quantity: 2 })
-        order.addCoupon({ code: "VALE20", percentage: 20 })
+        order.addCoupon(new Coupon("VALE20", 20, new Date("2021-12-12")))
         expect(order.getTotal()).toBe(558.4)
+    })
+
+    test("Should not apply an expired coupon", () => {
+        const order = new Order(customer, [])
+        order.addItem({ id: 1, product, quantity: 2 })
+        order.addCoupon(new Coupon("VALE20", 20, new Date("2020-12-12")))
+        expect(order.getTotal()).toBe(698.0)
     })
 })

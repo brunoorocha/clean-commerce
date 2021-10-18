@@ -36,6 +36,7 @@ export default class Order {
     }
 
     addCoupon (coupon: Coupon) {
+        if (coupon.isExpired()) { return }
         this.coupon = coupon
     }
 }

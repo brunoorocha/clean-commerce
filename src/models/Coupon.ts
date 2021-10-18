@@ -1,6 +1,12 @@
-type Coupon = {
-    code: string,
-    percentage: number
-}
+export default class Coupon {
+    constructor (
+        readonly code: string, 
+        readonly percentage: number,
+        readonly expireDate: Date
+    ) {}
 
-export default Coupon
+    isExpired () {
+        const today = new Date()
+        return (this.expireDate.getTime() < today.getTime())
+    }
+}

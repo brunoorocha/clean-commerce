@@ -13,7 +13,8 @@ export default class PlaceOrder {
         private orders: Order[] = []
     ) {
         this.coupons = [
-            { code: "VALE20", percentage: 20 }
+            new Coupon("VALE20", 20, new Date("2021-12-12")),
+            new Coupon("VALE20_EXPIRED", 20, new Date("2020-12-12"))
         ]
     }
 
