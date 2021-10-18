@@ -1,13 +1,13 @@
-import Order from "../models/Order"
-import Customer from "../models/Customer"
-import CPF from "../models/CPF"
-import Coupon from "../models/Coupon"
+import Order from "../domain/models/Order"
+import Customer from "../domain/models/Customer"
+import CPF from "../domain/models/CPF"
+import Coupon from "../domain/models/Coupon"
 import PlaceOrderInput from "./dto/PlaceOrderInput"
 import PlaceOrderOutput from "./dto/PlaceOrderOutput"
-import Item from "../models/Item"
-import FreightCalculator from "../models/FreightCalculator"
-import ZipcodeCalculator from "../models/ZipcodeCalculator"
-import ZipcodeCalculatorMemory from "../models/ZipcodeCalculatorMemory"
+import Item from "../domain/models/Item"
+import FreightCalculator from "../domain/services/FreightCalculator"
+import ZipcodeCalculator from "../domain/services/ZipcodeCalculator"
+import ZipcodeCalculatorMemory from "../domain/services/ZipcodeCalculatorMemory"
 
 export default class PlaceOrder {
     private coupons: Coupon[]

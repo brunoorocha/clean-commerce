@@ -1,7 +1,7 @@
-import RequiredLenghtValidator from '../validators/RequiredLengthValidator'
-import NumbersOnlyValidator from '../validators/NumbersOnlyValidator'
-import AllCharactersAreTheSameValidator from '../validators/AllCharactersAreTheSameValidator'
-import { removeSpecialCharacters } from '../utility'
+import RequiredLenghtValidator from '../../validators/RequiredLengthValidator'
+import NumbersOnlyValidator from '../../validators/NumbersOnlyValidator'
+import AllCharactersAreTheSameValidator from '../../validators/AllCharactersAreTheSameValidator'
+import { removeSpecialCharacters } from '../../utility'
 
 const CPF_LENGTH = 11
 const CPF_VALIDATOR_DIGITS_INDEX = 9
