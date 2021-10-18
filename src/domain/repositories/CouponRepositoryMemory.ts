@@ -1,5 +1,5 @@
 import CouponRepository from "./CouponRepository";
-import Coupon from "./models/Coupon";
+import Coupon from "../models/Coupon";
 
 export default class CouponRepositoryMemory implements CouponRepository {    
     constructor (

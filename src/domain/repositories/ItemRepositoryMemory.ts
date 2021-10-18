@@ -1,5 +1,5 @@
 import ItemRepository from "./ItemRepository";
-import Item from "./models/Item";
+import Item from "../models/Item";
 
 export default class ItemRepositoryMemory implements ItemRepository {
     constructor (

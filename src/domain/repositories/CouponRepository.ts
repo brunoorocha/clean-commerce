@@ -1,4 +1,4 @@
-import Coupon from "./models/Coupon";
+import Coupon from "../models/Coupon";
 
 export default interface CouponRepository {
     getCoupons (): Coupon[]

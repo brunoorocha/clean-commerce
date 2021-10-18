@@ -5,9 +5,9 @@ import PlaceOrderInput from "./dto/PlaceOrderInput"
 import PlaceOrderOutput from "./dto/PlaceOrderOutput"
 import FreightCalculator from "../domain/services/FreightCalculator"
 import ZipcodeCalculator from "../domain/services/ZipcodeCalculator"
-import CouponRepository from "../domain/CouponRepository"
-import ItemRepository from "../domain/ItemRepository"
-import OrderRepository from "../domain/OrderRepository"
+import CouponRepository from "../domain/repositories/CouponRepository"
+import ItemRepository from "../domain/repositories/ItemRepository"
+import OrderRepository from "../domain/repositories/OrderRepository"
 
 export default class PlaceOrder {
     constructor (
