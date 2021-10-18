@@ -5,6 +5,7 @@ type PlaceOrderInputItem = {
 
 type PlaceOrderInput = {
     cpf: string,
+    zipcode: string,
     items: PlaceOrderInputItem[],
     coupon: string
 }

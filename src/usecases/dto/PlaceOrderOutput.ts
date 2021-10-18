@@ -1,5 +1,6 @@
 type PlaceOrderOutput = {
-    total: number
+    total: number,
+    freight: number
 }
 
 export default PlaceOrderOutput
