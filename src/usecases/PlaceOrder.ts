@@ -7,25 +7,22 @@ import FreightCalculator from "../domain/services/FreightCalculator"
 import ZipcodeCalculator from "../domain/services/ZipcodeCalculator"
 import CouponRepository from "../domain/CouponRepository"
 import ItemRepository from "../domain/ItemRepository"
+import OrderRepository from "../domain/OrderRepository"
 
 export default class PlaceOrder {
     constructor (
         private itemRepository: ItemRepository,
         private couponRepository: CouponRepository,
-        private zipcodeCalculator: ZipcodeCalculator,
-        private orders: Order[] = []
-    ) {
-        this.itemRepository = itemRepository
-        this.couponRepository = couponRepository
-        this.zipcodeCalculator = zipcodeCalculator
-    }
+        private orderRepository: OrderRepository,
+        private zipcodeCalculator: ZipcodeCalculator
+    ) {}
 
     execute (input: PlaceOrderInput): PlaceOrderOutput {
         const customer = new Customer(1, "John Doe", CPF.create(input.cpf))
         const order = new Order(customer)
         this.addOrderItems(input, order)
         this.addCouponIfExists(input, order)
-        this.orders.push(order)
+        this.orderRepository.store(order)
 
         return { 
             total: order.getTotal(), 
