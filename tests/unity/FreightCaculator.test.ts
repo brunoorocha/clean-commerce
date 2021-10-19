@@ -1,5 +1,5 @@
-import FreightCalculator from "./FreightCalculator"
-import Item from "../models/Item"
+import FreightCalculator from "../../src/domain/service/FreightCalculator"
+import Item from "../../src/domain/entity/Item"
 
 describe("Freight Calculator Model", () => {
     test("Should calculate an item's freight price", () => {

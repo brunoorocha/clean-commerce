@@ -1,5 +1,5 @@
-import CouponRepository from "./CouponRepository";
-import Coupon from "../models/Coupon";
+import CouponRepository from "../../../domain/repository/CouponRepository"
+import Coupon from "../../../domain/entity/Coupon"
 
 export default class CouponRepositoryMemory implements CouponRepository {    
     constructor (
@@ -13,9 +13,7 @@ export default class CouponRepositoryMemory implements CouponRepository {
         return this.coupons
     }
 
-    getCouponWithCode(code: string): Coupon {
-        const coupon = this.coupons.find(coupon => coupon.code === code)
-        if (!coupon) { throw new Error(`No coupon found for code ${code}`) }
-        return coupon
+    getCouponWithCode(code: string): Coupon | undefined {
+        return this.coupons.find(coupon => coupon.code === code)
     }
 }

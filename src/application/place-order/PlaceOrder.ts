@@ -1,13 +1,13 @@
-import Order from "../domain/models/Order"
-import Customer from "../domain/models/Customer"
-import CPF from "../domain/models/CPF"
-import PlaceOrderInput from "./dto/PlaceOrderInput"
-import PlaceOrderOutput from "./dto/PlaceOrderOutput"
-import FreightCalculator from "../domain/services/FreightCalculator"
-import ZipcodeCalculator from "../domain/services/ZipcodeCalculator"
-import CouponRepository from "../domain/repositories/CouponRepository"
-import ItemRepository from "../domain/repositories/ItemRepository"
-import OrderRepository from "../domain/repositories/OrderRepository"
+import Order from "../../domain/entity/Order"
+import Customer from "../../domain/entity/Customer"
+import CPF from "../../domain/entity/CPF"
+import PlaceOrderInput from "./PlaceOrderInput"
+import PlaceOrderOutput from "./PlaceOrderOutput"
+import FreightCalculator from "../../domain/service/FreightCalculator"
+import ZipcodeCalculator from "../../domain/gateway/ZipcodeCalculator"
+import CouponRepository from "../../domain/repository/CouponRepository"
+import ItemRepository from "../../domain/repository/ItemRepository"
+import OrderRepository from "../../domain/repository/OrderRepository"
 
 export default class PlaceOrder {
     constructor (
@@ -23,7 +23,6 @@ export default class PlaceOrder {
         this.addOrderItems(input, order)
         this.addCouponIfExists(input, order)
         this.orderRepository.store(order)
-
         return { 
             total: order.getTotal(), 
             freight: order.freight
@@ -41,6 +40,7 @@ export default class PlaceOrder {
         const distance = this.zipcodeCalculator.calculate(input.zipcode, "99.999-99")
         input.items.forEach(orderItem => {
             const item = this.itemRepository.getItemWithId(orderItem.id)
+            if (!item) { throw new Error(`No item found for id ${orderItem.id}`) }
             order.addItem(orderItem.id, item.price, orderItem.quantity)
             order.freight += FreightCalculator.calculate(distance, item) * orderItem.quantity
         })

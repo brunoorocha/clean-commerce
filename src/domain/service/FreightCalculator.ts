@@ -1,4 +1,4 @@
-import Item from "../models/Item";
+import Item from "../entity/Item"
 
 export default class FreightCalculator {
     static calculate (distance: number, item: Item) {

@@ -1,7 +1,7 @@
-import Order from "./Order"
-import Customer from "./Customer"
-import CPF from "./CPF"
-import Coupon from "./Coupon"
+import Order from "../../src/domain/entity/Order"
+import Customer from "../../src/domain/entity/Customer"
+import CPF from "../../src/domain/entity/CPF"
+import Coupon from "../../src/domain/entity/Coupon"
 
 describe("Order Model", () => {
     let customer: Customer

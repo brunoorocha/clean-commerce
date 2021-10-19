@@ -1,5 +1,5 @@
-import ItemRepository from "./ItemRepository";
-import Item from "../models/Item";
+import ItemRepository from "../../../domain/repository/ItemRepository"
+import Item from "../../../domain/entity/Item"
 
 export default class ItemRepositoryMemory implements ItemRepository {
     constructor (
@@ -10,9 +10,7 @@ export default class ItemRepositoryMemory implements ItemRepository {
         ]
     ) {}
 
-    getItemWithId(id: string): Item {
-        const item = this.items.find(item => item.id === id)
-        if (!item) { throw new Error(`No item found for id ${id}`) }
-        return item
+    getItemWithId(id: string): Item | undefined {
+        return this.items.find(item => item.id === id)
     }
 }

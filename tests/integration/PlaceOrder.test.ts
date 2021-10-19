@@ -1,9 +1,9 @@
-import PlaceOrder from "./PlaceOrder"
-import PlaceOrderInput from "./dto/PlaceOrderInput"
-import CouponRepositoryMemory from "../domain/repositories/CouponRepositoryMemory"
-import ZipcodeCalculatorMemory from "../domain/services/ZipcodeCalculatorMemory"
-import ItemRepositoryMemory from "../domain/repositories/ItemRepositoryMemory"
-import OrderRepositoryMemory from "../domain/repositories/OrderRepositoryMemory"
+import PlaceOrder from "../../src/application/place-order/PlaceOrder"
+import PlaceOrderInput from "../../src/application/place-order/PlaceOrderInput"
+import CouponRepositoryMemory from "../../src/infrastructure/repository/memory/CouponRepositoryMemory"
+import ItemRepositoryMemory from "../../src/infrastructure/repository/memory/ItemRepositoryMemory"
+import OrderRepositoryMemory from "../../src/infrastructure/repository/memory/OrderRepositoryMemory"
+import ZipcodeCalculatorMemory from "../../src/infrastructure/gateway/memory/ZipcodeCalculatorMemory"
 
 describe("PlaceOrder UseCase", () => {
     let itemRepository: ItemRepositoryMemory

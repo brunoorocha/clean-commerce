@@ -1,4 +1,4 @@
-import CPF from "./CPF"
+import CPF from "../../src/domain/entity/CPF"
 
 describe("CPF Model", () => {
     test("Should not accept an empty CPF", () => {

@@ -1,4 +1,4 @@
-import Item from "./Item"
+import Item from "../../src/domain/entity/Item"
 
 describe("Item Model", () => {
     test("Should calculate item's volume", () => {

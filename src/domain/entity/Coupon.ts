@@ -2,11 +2,11 @@ export default class Coupon {
     constructor (
         readonly code: string, 
         readonly percentage: number,
-        readonly expireDate: Date
+        readonly expireDate: Date,
+        private readonly today = new Date()
     ) {}
 
     isExpired () {
-        const today = new Date()
-        return (this.expireDate.getTime() < today.getTime())
+        return (this.expireDate.getTime() < this.today.getTime())
     }
 }

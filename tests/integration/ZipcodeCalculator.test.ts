@@ -1,4 +1,4 @@
-import ZipcodeCalculatorMemory from "./ZipcodeCalculatorMemory"
+import ZipcodeCalculatorMemory from "../../src/infrastructure/gateway/memory/ZipcodeCalculatorMemory"
 
 describe("Zipcode Domain Service", () => {
     test("Should calculate the distance between zipcodes", () => {
